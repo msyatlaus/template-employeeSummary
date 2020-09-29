@@ -32,6 +32,36 @@ function employeeInformation() {
      };
    }); 
  }; 
+
+ function managerInformation() {
+    return inquirer.prompt([
+      {
+        type: "input",
+        message: "what is your manager's name?",
+        name: "name"
+      },
+      {
+        type: "input",
+        message: "What is your manager's id",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "What is your manager's email?",
+        name: "email"
+      },
+      {
+        type: "input",
+        message: "What is your manager's office number",
+        name: "number",
+      },
+    ]).then(function(answer) {
+      let manager = new Manager(answer.name, answer.id, answer.email, answer.number)
+      team.push(manager);
+  
+      employeeInformation()
+    })
+  };
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
